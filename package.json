@@ -5,6 +5,7 @@
   "scripts": {
     "test": "yarn cypress open-ct --browser firefox",
     "test:chrome": "yarn cypress open-ct --browser chrome",
+    "test:headless": "yarn cypress run-ct",
     "lint": "yarn run eslint",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
