@@ -13,7 +13,7 @@ import { Options, Vue } from 'vue-class-component';
   },
 })
 
-class HelloWorld extends Vue {
+class Foo extends Vue {
   count: number = 0;
 
   onClick() {
@@ -21,7 +21,7 @@ class HelloWorld extends Vue {
   }
 }
 
-export default HelloWorld;
+export default Foo;
 </script>
 
 <style scoped>
