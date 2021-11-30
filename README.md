@@ -7,6 +7,8 @@ My ideal starting point for Vue projects. (continuously updating)
 - ESLint (AirBnB): comes with the AirBnB eslint ruleset for vscode & Vue compiler.
 - Class Components: write your Vue components using the new class component.
 - Built-in Cypress E2E Testing: out-of-the-box Cypress with support for Vue 3 + Typescript.
+- Github Workflow: out-of-the-box Github workflow that runs e2e tests under src/
+
 ## Commands
 
 - `yarn test`: opens cypress in Firefox
