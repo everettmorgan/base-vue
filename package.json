@@ -24,6 +24,7 @@
     "@types/mocha": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
+    "@vue/babel-plugin-jsx": "^1.1.1",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-typescript": "~4.5.0",
@@ -66,7 +67,10 @@
       "no-unsafe-optional-chaining": "off",
       "no-useless-backreference": "off",
       "default-case-last": "off",
-      "no-nonoctal-decimal-escape": "off"
+      "no-nonoctal-decimal-escape": "off",
+      "import/extensions": "off",
+      "class-methods-use-this": "off",
+      "import/no-unresolved": "off"
     }
   },
   "browserslist": [

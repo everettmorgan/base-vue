@@ -1,10 +1,5 @@
-<template>
-  <Foo/>
-</template>
-
-<script lang="ts">
 import { Options, Vue } from 'vue-class-component';
-import Foo from './components/Foo.vue';
+import Foo from './components/Foo';
 
 @Options({
   components: {
@@ -13,12 +8,11 @@ import Foo from './components/Foo.vue';
 })
 
 class App extends Vue {
-
+  render() {
+    return (
+      <Foo/>
+    );
+  }
 }
 
 export default App;
-</script>
-
-<style>
-
-</style>

@@ -2,14 +2,12 @@
 no-undef,
 no-unused-vars,
 prefer-arrow-callback,
-import/no-unresolved,
-import/extensions,
 import/no-extraneous-dependencies,
 func-names
 */
 
 import { mount } from '@cypress/vue';
-import Foo from '../components/Foo.vue';
+import Foo from '../components/Foo';
 
 describe('Test', () => {
   it('renders a message', () => {

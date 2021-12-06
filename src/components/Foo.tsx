@@ -1,11 +1,5 @@
-<template>
-  <div>
-    <button @click.stop="onClick">clicked: {{ count }}</button>
-  </div>
-</template>
-
-<script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+import './Foo.css';
 
 @Options({
   props: {
@@ -19,11 +13,15 @@ class Foo extends Vue {
   onClick() {
     this.count += 1;
   }
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.onClick}>clicked: {this.count}</button>
+      </div>
+    );
+  }
 }
 
 export default Foo;
-</script>
-
-<style scoped>
-
-</style>
+export { Foo };

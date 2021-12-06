@@ -3,9 +3,10 @@
 My ideal starting point for Vue projects. (continuously updating)
 
 ## Features
+
 - Vue 3 + Typescript: initialized as a Vue 3 project with Typescript support. (also support js)
 - ESLint (AirBnB): comes with the AirBnB eslint ruleset for vscode & Vue compiler.
-- Class Components: write your Vue components using the new class component.
+- TSX + Class Components: write your Vue components using the new class component and TSX.
 - Built-in Cypress E2E Testing: out-of-the-box Cypress with support for Vue 3 + Typescript.
 - Github Workflow: out-of-the-box Github workflow that runs e2e tests under src/
 
