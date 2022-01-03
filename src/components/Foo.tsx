@@ -1,5 +1,5 @@
 import { Options, Vue } from 'vue-class-component';
-import './Foo.css';
+import './Foo.scss';
 
 @Options({
   props: {
