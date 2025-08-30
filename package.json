@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lint": "yarn eslint --fix",
+    "lint": "yarn eslint",
     "test": "yarn lint && yarn cypress open --component --browser firefox",
     "test:chrome": "yarn lint && yarn cypress open --component --browser chrome",
     "test:headless": "yarn lint && yarn cypress run --component",
