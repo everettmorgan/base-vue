@@ -2964,8 +2964,8 @@ __metadata:
   linkType: hard
 
 "@vitejs/plugin-vue-jsx@npm:^5.1.0":
-  version: 5.1.0
-  resolution: "@vitejs/plugin-vue-jsx@npm:5.1.0"
+  version: 5.1.1
+  resolution: "@vitejs/plugin-vue-jsx@npm:5.1.1"
   dependencies:
     "@babel/core": "npm:^7.28.3"
     "@babel/plugin-syntax-typescript": "npm:^7.27.1"
@@ -2975,7 +2975,7 @@ __metadata:
   peerDependencies:
     vite: ^5.0.0 || ^6.0.0 || ^7.0.0
     vue: ^3.0.0
-  checksum: 10c0/6f42641ef0a0c0d9f7568d97382159d7cbb886a263d318b93704bc0c41708c0f5cc150dfdb05cba2dfcdbcb74d32a76b6766469a894f89a9c821c7cb8d9370ad
+  checksum: 10c0/990352bca64e887b76ec73ccdcecd2dffbdd29c5a5a83b21a7db248ceafa91718f105c31555d949e9604d4f9c5d83421275887a69e0fcecab9f2c846b470bf34
   languageName: node
   linkType: hard
 
@@ -13458,15 +13458,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-class-component@npm:^8.0.0-0":
-  version: 8.0.0-rc.1
-  resolution: "vue-class-component@npm:8.0.0-rc.1"
-  peerDependencies:
-    vue: ^3.0.0
-  checksum: 10c0/b7dbedc7a3e0da1e7d021467fc65c7c90369edfae3626f33373828e382bbf31598deef30358df4a00df8ca6ac084203229769d4aeb15e728da4c22374953150a
-  languageName: node
-  linkType: hard
-
 "vue-eslint-parser@npm:^10.2.0":
   version: 10.2.0
   resolution: "vue-eslint-parser@npm:10.2.0"
@@ -13600,7 +13591,6 @@ __metadata:
     typescript: "npm:^5.9.2"
     vite: "npm:^7.1.3"
     vue: "npm:^3.5.20"
-    vue-class-component: "npm:^8.0.0-0"
     vue-loader: "npm:^17.4.2"
     vue-router: "npm:^4.5.1"
     vue-template-compiler: "npm:^2.7.16"
