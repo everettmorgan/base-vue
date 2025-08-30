@@ -1,17 +1,9 @@
-/* eslint-disable
-no-undef,
-no-unused-vars,
-prefer-arrow-callback,
-import/no-extraneous-dependencies,
-func-names
-*/
-
 import { mount } from '@cypress/vue';
-import Foo from '../components/Foo';
+import Foo from '../components/Foo.vue';
 
 describe('Test', () => {
   it('renders a message', () => {
-    mount(Foo);
+    mount(Foo, { props: { msg: 'Hello world!' } });
 
     const button = cy.get('button');
     button.click();
