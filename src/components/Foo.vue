@@ -1,9 +1,7 @@
 <template>
   <div>
     <p>{{ msg }}</p>
-    <button @click="onClick">
-      clicked: {{ count }}
-    </button>
+    <button @click="onClick">clicked: {{ count }}</button>
   </div>
 </template>
 
