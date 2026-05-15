@@ -1,34 +1,53 @@
-name: Tests
+name: CI
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 concurrency:
-  group: tests-${{ github.ref }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
-  tests:
+  checks:
+    name: Node ${{ matrix.node-version }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [22, 24]
     env:
       CI: true
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v6
 
     - name: Enable Corepack (Yarn 4)
       run: corepack enable
 
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
-        node-version: 22
+        node-version: ${{ matrix.node-version }}
         cache: yarn
         cache-dependency-path: yarn.lock
+
+    - name: Show tool versions
+      run: |
+        node --version
+        yarn --version
 
     - name: Install dependencies
       run: yarn install --immutable

@@ -54,7 +54,7 @@ yarn typecheck
 
 ## CI
 
-GitHub Actions run on pushes and pull requests to `main` using Node 22 and Yarn 4:
+GitHub Actions run on pushes and pull requests to `main`, and can be started manually from the Actions tab. CI runs the full check set on Node 22 and Node 24 using Yarn 4:
 
 ```bash
 yarn install --immutable
@@ -65,6 +65,8 @@ yarn build
 ```
 
 Workflow file: `.github/workflows/node.js.yml`.
+
+Dependabot checks for GitHub Actions and package updates weekly in `.github/dependabot.yml`.
 
 ## Tech Stack
 
