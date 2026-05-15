@@ -1,85 +1,101 @@
 # Base Vue Project
 
-A Vue 3 + TypeScript starter using Vite, Vitest, Yarn 4, ESLint, and Sass.
+[![CI](https://github.com/everettmorgan/base-vue/actions/workflows/node.js.yml/badge.svg)](https://github.com/everettmorgan/base-vue/actions/workflows/node.js.yml)
+[![CodeQL](https://github.com/everettmorgan/base-vue/actions/workflows/codeql.yml/badge.svg)](https://github.com/everettmorgan/base-vue/actions/workflows/codeql.yml)
+[![Standard Readme](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
 
-## Requirements
+> A Vue 3 and TypeScript starter using Vite, Vitest, Yarn 4, ESLint, Sass, and GitHub security scanning.
 
-- Node 22+
+This repository is a small, modern Vue application baseline. It is set up for fast local development, Vue-aware type checking, colocated component tests, and CI coverage across current Node LTS/runtime targets.
+
+## Table of Contents
+
+- [Background](#background)
+- [Install](#install)
+- [Usage](#usage)
+- [Development](#development)
+- [Testing](#testing)
+- [CI and Security](#ci-and-security)
+- [Project Structure](#project-structure)
+- [Maintainers](#maintainers)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Background
+
+The app is intentionally minimal. It keeps Vue Router and Vuex installed as starter dependencies, but the current runtime only mounts the root Vue app and a demo counter component.
+
+The source tree follows a Vite-oriented Vue layout:
+
+- `src/app/` contains the app shell.
+- `src/components/` contains feature/component folders.
+- Component styles and tests are colocated with the component they exercise.
+- `public/` contains static assets served by Vite.
+
+## Install
+
+Requirements:
+
+- Node 22 or newer
 - Yarn 4 via Corepack
 
 ```bash
 corepack enable
-node -v
-yarn -v
+yarn install --immutable
 ```
 
-## Quickstart
+## Usage
+
+Start the Vite dev server:
 
 ```bash
-yarn install --immutable
 yarn dev
 ```
 
-The dev server runs at the URL printed by Vite, usually http://localhost:5173.
+Vite prints the local URL when the server starts, usually `http://localhost:5173`.
 
-## Scripts
+Preview a production build:
 
-- `yarn dev`: start the Vite dev server
-- `yarn serve`: alias for `yarn dev`
-- `yarn build`: type-check and create a production build in `dist/`
-- `yarn preview`: preview the production build locally
-- `yarn lint`: run ESLint checks
-- `yarn typecheck`: run Vue-aware TypeScript checks
-- `yarn test`: run Vitest once
-- `yarn test:watch`: run Vitest in watch mode
+```bash
+yarn build
+yarn preview
+```
+
+## Development
+
+Available scripts:
+
+- `yarn dev`: start the Vite dev server.
+- `yarn serve`: alias for `yarn dev`.
+- `yarn build`: run Vue type checking and create a production build in `dist/`.
+- `yarn preview`: preview the production build locally.
+- `yarn lint`: run ESLint.
+- `yarn typecheck`: run Vue-aware TypeScript checks.
+- `yarn test`: run Vitest once.
+- `yarn test:watch`: run Vitest in watch mode.
 
 ## Testing
 
-Vitest runs component tests in a jsdom environment. Component tests use Vue Test Utils.
+Run the local verification set before pushing:
 
 ```bash
-yarn test
-```
-
-The example component test is colocated with its component at `src/components/DemoCounter/DemoCounter.spec.ts`.
-
-## Linting And Type Checking
-
-The project uses ESLint flat config with Vue and TypeScript parsing.
-
-```bash
-yarn lint
-yarn typecheck
-```
-
-## CI
-
-GitHub Actions run on pushes and pull requests to `main`, and can be started manually from the Actions tab. CI runs the full check set on Node 22 and Node 24 using Yarn 4:
-
-```bash
-yarn install --immutable
 yarn lint
 yarn typecheck
 yarn test
 yarn build
 ```
 
-Workflow file: `.github/workflows/node.js.yml`.
+Vitest runs component tests in a jsdom environment with Vue Test Utils. The example component test is colocated at `src/components/DemoCounter/DemoCounter.spec.ts`.
 
-Security workflows:
+## CI and Security
 
-- `.github/workflows/codeql.yml`: CodeQL scans JavaScript/TypeScript and GitHub Actions workflows on push, pull request, weekly schedule, and manual dispatch.
-- `.github/workflows/dependency-review.yml`: dependency review runs on pull requests and fails changes that introduce high or critical vulnerability findings.
+GitHub Actions workflows:
 
-Dependabot checks for GitHub Actions and package updates weekly in `.github/dependabot.yml`.
+- `.github/workflows/node.js.yml`: CI matrix for Node 22 and Node 24. Runs install, lint, type check, tests, and build.
+- `.github/workflows/codeql.yml`: CodeQL scanning for JavaScript/TypeScript and GitHub Actions workflows on push, pull request, weekly schedule, and manual dispatch.
+- `.github/workflows/dependency-review.yml`: dependency review on pull requests, failing high and critical vulnerability findings.
 
-## Tech Stack
-
-- Vue 3, TypeScript
-- Vite
-- Vitest, Vue Test Utils, jsdom
-- Vue Router and Vuex are installed as starter dependencies
-- Sass
+Dependabot checks GitHub Actions and package updates weekly via `.github/dependabot.yml`.
 
 ## Project Structure
 
@@ -98,12 +114,34 @@ base-vue/
 │   │   └── App.vue
 │   ├── assets/
 │   │   └── logo.png
-│   ├── components/
-│   │   └── DemoCounter/
-│   │       ├── DemoCounter.vue
-│   │       ├── DemoCounter.scss
-│   │       └── DemoCounter.spec.ts
+│   └── components/
+│       └── DemoCounter/
+│           ├── DemoCounter.vue
+│           ├── DemoCounter.scss
+│           └── DemoCounter.spec.ts
 └── .github/
+    ├── dependabot.yml
     └── workflows/
+        ├── codeql.yml
+        ├── dependency-review.yml
         └── node.js.yml
 ```
+
+## Maintainers
+
+[@everettmorgan](https://github.com/everettmorgan)
+
+## Contributing
+
+Use pull requests into `main`. Keep changes focused, update tests or docs when behavior changes, and run the local verification set before requesting review:
+
+```bash
+yarn lint
+yarn typecheck
+yarn test
+yarn build
+```
+
+## License
+
+No license file is currently present. All rights are reserved unless a license is added.
