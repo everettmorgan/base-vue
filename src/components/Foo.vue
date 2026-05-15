@@ -1,21 +1,29 @@
 <template>
   <div>
     <p>{{ msg }}</p>
-    <button @click="onClick">clicked: {{ count }}</button>
+    <button
+      type="button"
+      @click="onClick"
+    >
+      clicked: {{ count }}
+    </button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
 
+defineOptions({
+  name: 'DemoCounter',
+});
+
 interface Props {
   msg?: string;
 }
-const props = defineProps<Props>();
 
-console.log(props);
+defineProps<Props>();
 
-const count = ref<number>(0);
+const count = ref(0);
 
 function onClick() {
   count.value += 1;

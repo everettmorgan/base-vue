@@ -1,13 +1,19 @@
-import { mount } from '@cypress/vue';
+import { mount } from '@vue/test-utils';
+import { describe, expect, it } from 'vitest';
 import Foo from '../components/Foo.vue';
 
-describe('Test', () => {
-  it('renders a message', () => {
-    mount(Foo, { props: { msg: 'Hello world!' } });
+describe('Foo', () => {
+  it('increments the click count', async () => {
+    const wrapper = mount(Foo, {
+      props: {
+        msg: 'Hello world!',
+      },
+    });
 
-    const button = cy.get('button');
-    button.click();
-    button.click();
-    button.should('have.text', 'clicked: 2');
+    const button = wrapper.get('button');
+    await button.trigger('click');
+    await button.trigger('click');
+
+    expect(button.text()).toBe('clicked: 2');
   });
 });

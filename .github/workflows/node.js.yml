@@ -33,16 +33,14 @@ jobs:
     - name: Install dependencies
       run: yarn install --immutable
 
-    - name: Cache Cypress binary
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/Cypress
-        key: cypress-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          cypress-${{ runner.os }}-
+    - name: Lint
+      run: yarn lint
 
-    - name: Run tests (yarn test:headless)
-      uses: cypress-io/github-action@v6
-      with:
-        install: false
-        command: yarn test:headless
+    - name: Type check
+      run: yarn typecheck
+
+    - name: Test
+      run: yarn test
+
+    - name: Build
+      run: yarn build

@@ -1,81 +1,76 @@
-/* eslint-disable */
-
-const { FlatCompat } = require('@eslint/eslintrc');
-
-const compat = new FlatCompat({ baseDirectory: __dirname });
+const js = require('@eslint/js');
+const tsParser = require('@typescript-eslint/parser');
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const vue = require('eslint-plugin-vue');
 
 module.exports = [
-  ...compat.extends('plugin:vue/recommended', 'airbnb-base'),
-
   {
-    files: ['**/*.spec.ts', '**/*.js'],
-    rules: {
-      'no-undef': 'off',
-      'import/no-extraneous-dependencies': 'warn',
-      'global-require': 'warn'
-    }
+    ignores: [
+      'coverage/**',
+      'dist/**',
+      'node_modules/**',
+      'ts/**',
+    ],
   },
-
+  js.configs.recommended,
+  ...vue.configs['flat/recommended'],
+  {
+    files: ['**/*.cjs'],
+    languageOptions: {
+      sourceType: 'commonjs',
+    },
+  },
+  {
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+      },
+    },
+    plugins: {
+      '@typescript-eslint': tsPlugin,
+    },
+    rules: {
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
+    },
+  },
   {
     files: ['**/*.vue'],
     languageOptions: {
-      parser: require('vue-eslint-parser'),
       parserOptions: {
-        parser: require('@typescript-eslint/parser'),
-        ecmaVersion: 2020,
+        parser: tsParser,
+        ecmaVersion: 'latest',
         sourceType: 'module',
-        extraFileExtensions: ['.vue'],
       },
       globals: {
-        Atomics: 'readonly',
-        SharedArrayBuffer: 'readonly',
-        defineProps: 'readonly',
         defineEmits: 'readonly',
         defineExpose: 'readonly',
+        defineOptions: 'readonly',
+        defineProps: 'readonly',
         withDefaults: 'readonly',
       },
     },
     plugins: {
-      vue: require('eslint-plugin-vue'),
-      '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
+      '@typescript-eslint': tsPlugin,
     },
     rules: {
       'no-unused-vars': 'off',
-      'vue/multi-word-component-names': 'warn'
-    },
-  },
-
-  {
-    files: ['**/*.{ts,tsx,d.ts,cjs}'],
-    languageOptions: {
-      parser: require('@typescript-eslint/parser'),
-      parserOptions: {
-        ecmaVersion: 2020,
-        sourceType: 'module',
-        ecmaFeatures: { jsx: true },
-      },
-      globals: {
-        Atomics: 'readonly',
-        SharedArrayBuffer: 'readonly',
-      },
-    },
-    plugins: {
-      vue: require('eslint-plugin-vue'),
-      '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
-    },
-    rules: {
-      'no-restricted-exports': 'off',
-      'no-loss-of-precision': 'off',
-      'no-promise-executor-return': 'off',
-      'no-unreachable-loop': 'off',
-      'no-unsafe-optional-chaining': 'off',
-      'no-useless-backreference': 'off',
-      'default-case-last': 'off',
-      'no-nonoctal-decimal-escape': 'off',
-      'import/extensions': 'off',
-      'class-methods-use-this': 'off',
-      'import/no-unresolved': 'off',
-      'import/no-extraneous-dependencies': 'warn',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
     },
   },
 ];

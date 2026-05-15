@@ -1,97 +1,102 @@
 # Base Vue Project
 
-A Vue 3 + TypeScript starter using Vue CLI (serve/build), Vite (Cypress Component Testing), Yarn 4, ESLint (Airbnb + Vue), and Sass.
+A Vue 3 + TypeScript starter using Vite, Vitest, Yarn 4, ESLint, and Sass.
 
 ## Requirements
+
 - Node 22+
-- Yarn 4 (via Corepack)
+- Yarn 4 via Corepack
 
 ```bash
 corepack enable
-node -v        # should be 22.x
-yarn -v        # Yarn 4.x
+node -v
+yarn -v
 ```
 
 ## Quickstart
+
 ```bash
 yarn install --immutable
-yarn serve
+yarn dev
 ```
-- Dev server: http://localhost:8080
+
+The dev server runs at the URL printed by Vite, usually http://localhost:5173.
 
 ## Scripts
-- `yarn serve`: start the Vue CLI dev server
-- `yarn build`: production build to `dist/`
+
+- `yarn dev`: start the Vite dev server
+- `yarn serve`: alias for `yarn dev`
+- `yarn build`: type-check and create a production build in `dist/`
+- `yarn preview`: preview the production build locally
 - `yarn lint`: run ESLint checks
-- `yarn test`: lint then open Cypress Component Test Runner (defaults to Firefox)
-- `yarn test:chrome`: lint then open Cypress in Chrome
-- `yarn test:headless`: lint then run headless component tests (used in CI)
+- `yarn typecheck`: run Vue-aware TypeScript checks
+- `yarn test`: run Vitest once
+- `yarn test:watch`: run Vitest in watch mode
 
-## Testing (Cypress Component)
-- Bundler: Vite; Framework: Vue (`cypress.config.ts`)
-- Spec pattern: `src/**/*.spec.{ts,tsx,js,jsx}`
-- Example: `src/tests/Foo.spec.ts`
-- Open runner:
-  ```bash
-  yarn test            # Firefox
-  yarn test:chrome     # Chrome
-  ```
-- Headless (CI-equivalent):
-  ```bash
-  yarn test:headless
-  ```
+## Testing
 
-## Linting
-- Config: Flat ESLint with `plugin:vue/recommended` + `airbnb-base` and TypeScript rules.
-- Run:
-  ```bash
-  yarn lint
-  # optional:
-  yarn eslint . --fix
-  ```
-- Tip: Install the “ESLint” editor extension for inline feedback.
+Vitest runs component tests in a jsdom environment. Component tests use Vue Test Utils.
+
+```bash
+yarn test
+```
+
+The example component test lives at `src/tests/Foo.spec.ts`.
+
+## Linting And Type Checking
+
+The project uses ESLint flat config with Vue and TypeScript parsing.
+
+```bash
+yarn lint
+yarn typecheck
+```
 
 ## CI
-- GitHub Actions run on pushes/PRs to `main`, using Node 22 + Yarn 4 via Corepack and `yarn test:headless`.
-- Workflow file: `.github/workflows/node.js.yml`
 
-## Tech stack
-- Vue 3, TypeScript
-- Vue Router, Vuex
-- Build/serve: Vue CLI
-- Component tests: Cypress (+ Vite bundler)
-- Styling: Sass
+GitHub Actions run on pushes and pull requests to `main` using Node 22 and Yarn 4:
 
-## Project structure
-
+```bash
+yarn install --immutable
+yarn lint
+yarn typecheck
+yarn test
+yarn build
 ```
+
+Workflow file: `.github/workflows/node.js.yml`.
+
+## Tech Stack
+
+- Vue 3, TypeScript
+- Vite
+- Vitest, Vue Test Utils, jsdom
+- Vue Router and Vuex are installed as starter dependencies
+- Sass
+
+## Project Structure
+
+```text
 base-vue/
-├── babel.config.js           # Babel configuration
-├── vue.config.js             # Vue CLI configuration
-├── vite.config.ts            # Vite configuration for Cypress
-├── cypress.config.ts         # Cypress configuration
-├── eslint.config.cjs         # ESLint configuration
+├── index.html
+├── vite.config.ts
+├── eslint.config.cjs
+├── tsconfig.json
 ├── public/
-│   ├── index.html            # HTML template
-│   └── favicon.ico           # Site favicon
+│   └── favicon.ico
 ├── src/
-│   ├── main.ts               # Vue app entry point
-│   ├── App.vue               # Root Vue component
-│   ├── App.scss              # Global styles
+│   ├── main.ts
+│   ├── App.vue
+│   ├── App.scss
+│   ├── vite-env.d.ts
 │   ├── assets/
-│   │   └── logo.png          # Static assets
+│   │   └── logo.png
 │   ├── components/
-│   │   ├── Foo.vue           # Example component
-│   │   └── Foo.scss          # Component styles
+│   │   ├── Foo.vue
+│   │   └── Foo.scss
 │   └── tests/
-│       └── Foo.spec.ts       # Component tests
-├── cypress/
-│   ├── fixtures/             # Test data
-│   ├── plugins/              # Cypress plugins
-│   ├── support/              # Support files
-│   ├── downloads/            # Downloaded files during tests
-│   └── screenshots/          # Test screenshots
-├── .github/
-│   └── workflows/
-│       └── node.js.yml       # CI/CD workflow
+│       └── Foo.spec.ts
+└── .github/
+    └── workflows/
+        └── node.js.yml
 ```

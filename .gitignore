@@ -2,7 +2,7 @@
 node_modules
 /dist
 ts/
-videos/
+coverage/
 
 # local env files
 .env.local
