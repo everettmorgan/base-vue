@@ -66,6 +66,11 @@ yarn build
 
 Workflow file: `.github/workflows/node.js.yml`.
 
+Security workflows:
+
+- `.github/workflows/codeql.yml`: CodeQL scans JavaScript/TypeScript and GitHub Actions workflows on push, pull request, weekly schedule, and manual dispatch.
+- `.github/workflows/dependency-review.yml`: dependency review runs on pull requests and fails changes that introduce high or critical vulnerability findings.
+
 Dependabot checks for GitHub Actions and package updates weekly in `.github/dependabot.yml`.
 
 ## Tech Stack
