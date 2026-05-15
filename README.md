@@ -41,7 +41,7 @@ Vitest runs component tests in a jsdom environment. Component tests use Vue Test
 yarn test
 ```
 
-The example component test lives at `src/tests/Foo.spec.ts`.
+The example component test is colocated with its component at `src/components/DemoCounter/DemoCounter.spec.ts`.
 
 ## Linting And Type Checking
 
@@ -93,16 +93,16 @@ base-vue/
 │   └── favicon.ico
 ├── src/
 │   ├── main.ts
-│   ├── App.vue
-│   ├── App.scss
 │   ├── vite-env.d.ts
+│   ├── app/
+│   │   └── App.vue
 │   ├── assets/
 │   │   └── logo.png
 │   ├── components/
-│   │   ├── Foo.vue
-│   │   └── Foo.scss
-│   └── tests/
-│       └── Foo.spec.ts
+│   │   └── DemoCounter/
+│   │       ├── DemoCounter.vue
+│   │       ├── DemoCounter.scss
+│   │       └── DemoCounter.spec.ts
 └── .github/
     └── workflows/
         └── node.js.yml

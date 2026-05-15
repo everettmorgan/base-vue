@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils';
 import { describe, expect, it } from 'vitest';
-import Foo from '../components/Foo.vue';
+import DemoCounter from './DemoCounter.vue';
 
-describe('Foo', () => {
+describe('DemoCounter', () => {
   it('increments the click count', async () => {
-    const wrapper = mount(Foo, {
+    const wrapper = mount(DemoCounter, {
       props: {
         msg: 'Hello world!',
       },

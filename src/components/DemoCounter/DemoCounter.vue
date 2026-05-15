@@ -30,4 +30,4 @@ function onClick() {
 }
 </script>
 
-<style lang="scss" scoped src="./Foo.scss"></style>
+<style lang="scss" scoped src="./DemoCounter.scss"></style>
