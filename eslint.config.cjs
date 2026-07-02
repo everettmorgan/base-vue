@@ -1,76 +1,54 @@
 const js = require('@eslint/js');
-const tsParser = require('@typescript-eslint/parser');
-const tsPlugin = require('@typescript-eslint/eslint-plugin');
+const globals = require('globals');
+const tseslint = require('typescript-eslint');
 const vue = require('eslint-plugin-vue');
 
-module.exports = [
+module.exports = tseslint.config(
   {
     ignores: [
       'coverage/**',
       'dist/**',
       'node_modules/**',
-      'ts/**',
+      '.yarn/**',
     ],
   },
   js.configs.recommended,
+  ...tseslint.configs.recommended,
   ...vue.configs['flat/recommended'],
+  {
+    // Parse <script lang="ts"> blocks in SFCs with the TypeScript parser.
+    files: ['**/*.vue'],
+    languageOptions: {
+      parserOptions: {
+        parser: tseslint.parser,
+      },
+    },
+  },
+  {
+    files: ['**/*.{ts,tsx,vue}'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+    },
+    rules: {
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
+    },
+  },
   {
     files: ['**/*.cjs'],
     languageOptions: {
       sourceType: 'commonjs',
-    },
-  },
-  {
-    files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-      parser: tsParser,
-      parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-      },
-    },
-    plugins: {
-      '@typescript-eslint': tsPlugin,
+      globals: globals.node,
     },
     rules: {
-      'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-        },
-      ],
+      '@typescript-eslint/no-require-imports': 'off',
     },
   },
-  {
-    files: ['**/*.vue'],
-    languageOptions: {
-      parserOptions: {
-        parser: tsParser,
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-      },
-      globals: {
-        defineEmits: 'readonly',
-        defineExpose: 'readonly',
-        defineOptions: 'readonly',
-        defineProps: 'readonly',
-        withDefaults: 'readonly',
-      },
-    },
-    plugins: {
-      '@typescript-eslint': tsPlugin,
-    },
-    rules: {
-      'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-        },
-      ],
-    },
-  },
-];
+);

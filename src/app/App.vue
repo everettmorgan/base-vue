@@ -1,7 +1,15 @@
 <template>
-  <DemoCounter msg="Hello world!" />
+  <nav>
+    <RouterLink to="/">
+      Home
+    </RouterLink>
+    <RouterLink to="/about">
+      About
+    </RouterLink>
+  </nav>
+  <RouterView />
 </template>
 
 <script setup lang="ts">
-import DemoCounter from '@/components/DemoCounter/DemoCounter.vue';
+import { RouterLink, RouterView } from 'vue-router';
 </script>
