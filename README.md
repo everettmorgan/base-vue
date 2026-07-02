@@ -4,7 +4,7 @@
 [![CodeQL](https://github.com/everettmorgan/base-vue/actions/workflows/codeql.yml/badge.svg)](https://github.com/everettmorgan/base-vue/actions/workflows/codeql.yml)
 [![Standard Readme](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
 
-> A Vue 3 and TypeScript starter using Vite, Vitest, Yarn 4, ESLint, Sass, and GitHub security scanning.
+> A Vue 3 and TypeScript starter using Vite, Vitest, Pinia, Vue Router, Yarn 4, ESLint, Sass, and GitHub security scanning.
 
 This repository is a small, modern Vue application baseline. It is set up for fast local development, Vue-aware type checking, colocated component tests, and CI coverage across current Node LTS/runtime targets.
 
@@ -23,11 +23,14 @@ This repository is a small, modern Vue application baseline. It is set up for fa
 
 ## Background
 
-The app is intentionally minimal. It keeps Vue Router and Vuex installed as starter dependencies, but the current runtime only mounts the root Vue app and a demo counter component.
+The app is intentionally minimal but wired for real-world patterns. It uses [Pinia](https://pinia.vuejs.org/) for state management and [Vue Router](https://router.vuejs.org/) for navigation, demonstrated by a shared counter store and two routes (a home view and a lazy-loaded about view).
 
 The source tree follows a Vite-oriented Vue layout:
 
-- `src/app/` contains the app shell.
+- `src/app/` contains the app shell (`App.vue`), which renders navigation and the active route via `<RouterView>`.
+- `src/router/` contains the Vue Router configuration.
+- `src/stores/` contains Pinia stores.
+- `src/views/` contains route-level views.
 - `src/components/` contains feature/component folders.
 - Component styles and tests are colocated with the component they exercise.
 - `public/` contains static assets served by Vite.
@@ -85,7 +88,7 @@ yarn test
 yarn build
 ```
 
-Vitest runs component tests in a jsdom environment with Vue Test Utils. The example component test is colocated at `src/components/DemoCounter/DemoCounter.spec.ts`.
+Vitest runs component tests in a jsdom environment with Vue Test Utils. The example component test is colocated at `src/components/DemoCounter/DemoCounter.spec.ts`; it installs a fresh Pinia instance per case and asserts the shared counter store increments on click.
 
 ## CI and Security
 
@@ -114,11 +117,18 @@ base-vue/
 │   │   └── App.vue
 │   ├── assets/
 │   │   └── logo.png
-│   └── components/
-│       └── DemoCounter/
-│           ├── DemoCounter.vue
-│           ├── DemoCounter.scss
-│           └── DemoCounter.spec.ts
+│   ├── components/
+│   │   └── DemoCounter/
+│   │       ├── DemoCounter.vue
+│   │       ├── DemoCounter.scss
+│   │       └── DemoCounter.spec.ts
+│   ├── router/
+│   │   └── index.ts
+│   ├── stores/
+│   │   └── counter.ts
+│   └── views/
+│       ├── HomeView.vue
+│       └── AboutView.vue
 └── .github/
     ├── dependabot.yml
     └── workflows/
