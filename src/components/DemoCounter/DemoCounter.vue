@@ -3,15 +3,15 @@
     <p>{{ msg }}</p>
     <button
       type="button"
-      @click="onClick"
+      @click="counter.increment"
     >
-      clicked: {{ count }}
+      clicked: {{ counter.count }}
     </button>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { useCounterStore } from '@/stores/counter';
 
 defineOptions({
   name: 'DemoCounter',
@@ -23,11 +23,7 @@ interface Props {
 
 defineProps<Props>();
 
-const count = ref(0);
-
-function onClick() {
-  count.value += 1;
-}
+const counter = useCounterStore();
 </script>
 
 <style lang="scss" scoped src="./DemoCounter.scss"></style>
