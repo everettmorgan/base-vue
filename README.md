@@ -154,4 +154,4 @@ yarn build
 
 ## License
 
-No license file is currently present. All rights are reserved unless a license is added.
+MIT (c) Everett Morgan. See [LICENSE](LICENSE).
