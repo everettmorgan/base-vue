@@ -3967,7 +3967,7 @@ __metadata:
   dependencies:
     "@eslint/js": "npm:^10"
     "@vitejs/plugin-vue": "npm:^6.0.7"
-    "@vue/compiler-dom": "npm:3.5.34"
+    "@vue/compiler-dom": "npm:3.5.39"
     "@vue/compiler-sfc": "npm:^3.5.34"
     "@vue/test-utils": "npm:^2.4.10"
     eslint: "npm:^10"
