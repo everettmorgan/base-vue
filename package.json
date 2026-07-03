@@ -28,7 +28,7 @@
     "@vue/compiler-sfc": "^3.5.34",
     "@vue/test-utils": "^2.4.10",
     "eslint": "^10",
-    "eslint-plugin-vue": "^10.9.1",
+    "eslint-plugin-vue": "^10.9.2",
     "globals": "^17.7.0",
     "jsdom": "^29.1.1",
     "sass": "^1.91.0",
